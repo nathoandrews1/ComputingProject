@@ -39,45 +39,60 @@
     <form>
       <div class="row">
         <div class="col">
+          <label for="file" class="col-sm-2 col-form-label ms-2">File to encrypt or decrypt:</label>
           <input type="file" id="file" class="form-control" name="message" placeholder="Message">
         </div>
-        <div class="col">
-          <input type="text" id="key" class="form-control" name="key" placeholder="Personal Key">
+        <div class="row mt-2 mb-2">
+          <div class="col">
+            <label for="message" class="col-sm-2 col-form-label ms-2">Text message to encrypt or decrypt:</label>
+            <input type="text" id="message" class="form-control" name="message" placeholder="Message">
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label for="key" class="col-sm-2 col-form-label ms-2">Decryption Key:</label>
+          <div class="col">
+            <input type="text" id="key" class="form-control" name="key" placeholder="Personal Key">
+          </div>
         </div>
         <center>
-          <button type="button" id="encryptBtn" class="btn btn-outline-primary mt-4">Encrypt</button>
-          <button type="button" id="decryptBtn" class="btn btn-outline-primary mt-4">Decrypt</button>
+          <button type="button" id="encryptBtn" class="btn btn-outline-success mt-4 mb-4">Encrypt</button>
+          <button type="button" id="decryptBtn" class="btn btn-outline-danger mt-4 mb-4">Decrypt</button>
         </center>
       </div>
     </form>
 
-    <a id="download" download="encrypted.txt">Download</a>
+    <a id="download" download="encrypted.txt"></a>
 
-    <div class="row">
+    <div class="row mb-2">
       <div class="col">
+        <label for="encrypted" id="encryptedLabel" class="col-sm-2 col-form-label ms-2">Encrypted Message:</label>
         <textarea id="encrypted" class="form-control" name="encrypted" placeholder="Encrypted Message"></textarea>
       </div>
+    </div>
+    <div class="row">
       <div class="col">
+        <label for="decrypted" id="decryptedLabel" class="col-sm-2 col-form-label ms-2">Decrypted Message:</label>
         <textarea id="decrypted" class="form-control" name="decrypted" placeholder="Decrypted Message"></textarea>
       </div>
     </div>
-  </div>
 
-  <nav aria-label="Some label">
-    <ul class="pagination justify-content-center">
-      <li class="page-item" name="index">
-        <a class="page-link" href="../index.html">Info<span class="sr-only">(current)</span></a></li>
-      <li class="page-item" name="vault">
-        <a class="page-link" href="../html/vault.html">Vault</a>
-      </li>
-      <li class="page-item" name="keys">
-        <a class="page-link" href="../html/keys.html">Keys</a>
-      </li>
-      <li class="page-item" name="encrypt">
-        <a class="page-link" href="../html/encrypt.html">Encrypt</a>
-      </li>
-    </ul>
-  </nav>
+
+    <nav aria-label="Some label">
+      <ul class="pagination justify-content-center">
+        <li class="page-item" name="index">
+          <a class="page-link" href="../index.html">Info<span class="sr-only">(current)</span></a></li>
+        <li class="page-item" name="vault">
+          <a class="page-link" href="../html/vault.html">Vault</a>
+        </li>
+        <li class="page-item" name="keys">
+          <a class="page-link" href="../html/keys.html">Keys</a>
+        </li>
+        <li class="page-item" name="encrypt">
+          <a class="page-link" href="../html/encrypt.html">Encrypt</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
   <script src="../js/checklink.js"></script>
   <script src="../js/encrypt.js"></script>
 </div>

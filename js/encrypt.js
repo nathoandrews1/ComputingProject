@@ -1,28 +1,50 @@
 var encrypted;
 var decrypted;
 
+window.onload = function () {
+  //Hide labels and output areas
+  document.getElementById("encrypted").hidden = true;
+  document.getElementById("encryptedLabel").hidden = true;
+  document.getElementById("decrypted").hidden = true;
+  document.getElementById("decryptedLabel").hidden = true;
+}
 //On Click function to for encrypt button
-document.getElementById("encryptBtn").onclick = function() {
-  if(checkInputFields()) {
-    encryptFile();
+document.getElementById("encryptBtn").onclick = function () {
+  if (checkInputFields()) {
+
+    //The number 2 here means to use file encryption
+    if (checkInputsForType() == 2) {
+      encryptFile();
+    }
+    //The number 1 here means to use message encryption
+    else if (checkInputsForType() == 1) {
+      encrypt();
+    }
   } else {
-    alert("Please fill in all fields.");
+    alert("Please fill fields, message + key OR file + key.");
   }
 }
 
 //On Click function to for decrypt button
-if(document.getElementById("decryptBtn")) {
+if (document.getElementById("decryptBtn")) {
   document.getElementById("decryptBtn").onclick = function () {
-    if(checkInputFields()) {
-      decryptFile();
+    if (checkInputFields()) {
+      //The number 2 here means to use file decryption
+      if (checkInputsForType() == 2) {
+        decryptFile();
+      }
+      //The number 1 here means to use message decryption
+      else if (checkInputsForType() == 1) {
+        decrypt();
+      }
     } else {
-      alert("Please fill in all fields.");
+      alert("Please fill fields, message + key OR file + key.");
     }
   }
 }
 
-if(document.getElementById("saltBtn")) {
-  document.getElementById("saltBtn").onclick = function() {
+if (document.getElementById("saltBtn")) {
+  document.getElementById("saltBtn").onclick = function () {
     var salt = document.getElementById("salt");
     salt.value = generateSalt();
   }
@@ -31,9 +53,18 @@ if(document.getElementById("saltBtn")) {
 //encrypt function using cryptoJS
 function encrypt() {
   var key = document.getElementById("key").value;
-  var file = document.getElementById("file").value;
+  var message = document.getElementById("message").value;
   try {
-    encrypted = CryptoJS.AES.encrypt(file, key);
+    encrypted = CryptoJS.AES.encrypt(message, key);
+
+    if(document.getElementById("decrypted").hidden == false) {
+      document.getElementById("decrypted").hidden = true;
+      document.getElementById("decryptedLabel").hidden = true;
+    }
+
+    //Unhide labels and output areas and inject output
+    document.getElementById("encrypted").hidden = false;
+    document.getElementById("encryptedLabel").hidden = false;
     document.getElementById("encrypted").innerHTML = encrypted.toString();
   } catch (e) {
     alert("Error Encrypting try again.");
@@ -43,27 +74,27 @@ function encrypt() {
 //decrypt function using cryptoJS
 function decrypt() {
   var key = document.getElementById("key").value;
-  var file = document.getElementById("file").value;
+  var message = document.getElementById("message").value;
   try {
-    decrypted = CryptoJS.AES.decrypt(file, key);
+    decrypted = CryptoJS.AES.decrypt(message, key);
 
-    if(decrypted.toString(CryptoJS.enc.Utf8) == "") {
+    if (decrypted.toString(CryptoJS.enc.Utf8) == "") {
       alert("Wrong key, try again.");
+      return;
     }
 
+    if(document.getElementById("encrypted").hidden == false) {
+      document.getElementById("encrypted").hidden = true;
+      document.getElementById("encryptedLabel").hidden = true;
+    }
+
+    //Unhide labels and output areas and inject output
+    document.getElementById("decrypted").hidden = false;
+    document.getElementById("decryptedLabel").hidden = false;
     document.getElementById("decrypted").innerHTML = decrypted.toString(CryptoJS.enc.Utf8);
   } catch (e) {
     document.getElementById("decrypted").innerHTML = "Incorrect key";
   }
-}
-
-//Download file function
-function downloadFile() {
-  var file = document.getElementById("file").files[0];
-  var link = document.getElementById("download");
-  link.href = window.URL.createObjectURL(file);
-  link.download = file.name;
-  link.click();
 }
 
 //Create function to encrypt a file with cryptojs and download it
@@ -92,6 +123,13 @@ function decryptFile() {
   reader.onload = function (e) {
     var fileData = e.target.result;
     var decrypted = CryptoJS.AES.decrypt(fileData, key).toString(CryptoJS.enc.Latin1);
+
+    if (!/^data:/.test(decrypted)) {
+      alert("Wrong key or file not encrypted, try again.");
+      return;
+    }
+
+    //check if file is encrypted
     var blob = new Blob([decrypted], {type: "text/plain"});
     var link = document.getElementById("download");
     //link.href = window.URL.createObjectURL(decrypted);
@@ -104,20 +142,6 @@ function decryptFile() {
     link.click();
   }
   reader.readAsText(file);
-}
-
-//Function to check if file is encrypted
-function checkFile() {
-  var file = document.getElementById("file").files[0];
-  var reader = new FileReader();
-  reader.onload = function (e) {
-    var fileData = e.target.result;
-    var decrypted = CryptoJS.AES.decrypt(fileData, "test").toString(CryptoJS.enc.Latin1);
-    if (decrypted == "") {
-      document.getElementById("file").value = "";
-      alert("File is not encrypted.");
-    }
-  }
 }
 
 //gereate salt for password
@@ -138,11 +162,26 @@ function checkInputFields() {
   var key = document.getElementById("key").value;
   var file = document.getElementById("file").value;
   var inputFilled = false;
-  if(key == "" || file == "") {
+
+  if (message == "" || file == "" && key == "") {
     inputFilled = false;
-  } else {
+  }
+  else {
     inputFilled = true;
   }
   return inputFilled;
+}
+
+//Checking inputs to determine if encrypt message or file should be used
+function checkInputsForType() {
+  var key = document.getElementById("key").value;
+  var message = document.getElementById("message").value;
+  var file = document.getElementById("file").value;
+
+  if (key != "" && message != "") {
+    return 1;
+  } else if (key != "" && file != "") {
+    return 2;
+  }
 }
 
