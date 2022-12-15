@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Vault</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+  <script src="../bootstrap/js/jquery-3.6.0.js"></script>
+  <script src="../bootstrap/js/bootstrap.js"></script>
+  <script src="../cryptojs/components/core.js"></script>
+  <script src="../cryptojs/components/md5.js"></script>
+  <script src="../cryptojs/rollups/aes.js"></script>
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+<body>
+  <div class="main">
+    <div class="default-container">
+      <!--Top header for all pages -->
+      <div class="card">
+        <div class="card-header">
+          Salt N Pepper
+        </div>
+      </div>
+      <!--End of top header for all pages -->
+
+      <form>
+        <div class="row">
+          <div class="col">
+            <input type="text" id="message" class="form-control" name="message" placeholder="Message">
+          </div>
+          <div class="col">
+            <input type="text" id="key" class="form-control" name="key" placeholder="Personal Key">
+          </div>
+          <div class="col">
+            <input type="text" id="salt" class="form-control" name="salt" placeholder="Salt Key">
+          </div>
+          <center>
+            <button type="button" id="encryptBtn" class="btn btn-outline-primary mt-4">Encrypt</button>
+            <button type="button" id="decryptBtn" class="btn btn-outline-primary mt-4">Decrypt</button>
+            <button type="button" id="saltBtn" class="btn btn-outline-primary mt-4">Salt</button>
+          </center>
+        </div>
+      </form>
+
+      <div class="row">
+        <div class="col">
+          <textarea id="encrypted" class="form-control" name="encrypted" placeholder="Encrypted Message"></textarea>
+        </div>
+        <div class="col">
+          <textarea id="decrypted" class="form-control" name="decrypted" placeholder="Decrypted Message"></textarea>
+        </div>
+    </div>
+  </div>
+
+    <nav aria-label="Some label">
+      <ul class="pagination justify-content-center">
+        <li class="page-item" name="index">
+          <a class="page-link" href="../index.html">Info<span class="sr-only">(current)</span></a></li>
+        <li class="page-item" name="vault">
+          <a class="page-link" href="../html/vault.html">Vault</a>
+        </li>
+        <li class="page-item" name="keys">
+          <a class="page-link" href="../html/keys.html">Keys</a>
+        </li>
+        <li class="page-item" name="encrypt">
+          <a class="page-link" href="../html/encrypt.html">Encrypt</a>
+        </li>
+      </ul>
+    </nav>
+    <script src="../js/checklink.js"></script>
+    <script src="../js/encrypt.js"></script>
+  </div>
+</body>
+</html>
