@@ -8,40 +8,39 @@ window.onload = function () {
   document.getElementById("decrypted").hidden = true;
   document.getElementById("decryptedLabel").hidden = true;
 }
-//On Click function to for encrypt button
-document.getElementById("encryptBtn").onclick = function () {
-  if (checkInputFields()) {
 
-    //The number 2 here means to use file encryption
-    if (checkInputsForType() == 2) {
-      encryptFile();
-    }
-    //The number 1 here means to use message encryption
-    else if (checkInputsForType() == 1) {
-      encrypt();
-    }
-  } else {
-    alert("Please fill fields, message + key OR file + key.");
+//On Click function for encrypt button
+document.getElementById("encryptBtn").onclick = function () {
+  //Checking inputs fields are not empty
+  //The number 2 here means to use file encryption
+  if (checkInputsForType() == 2) {
+    encryptFile();
+  }
+  //The number 1 here means to use message encryption
+  else if (checkInputsForType() == 1) {
+    encrypt();
+  }
+  else {
+    alertBadInputs();
   }
 }
 
-//On Click function to for decrypt button
+//On Click function for decrypt button
 if (document.getElementById("decryptBtn")) {
   document.getElementById("decryptBtn").onclick = function () {
-    if (checkInputFields()) {
-      //The number 2 here means to use file decryption
-      if (checkInputsForType() == 2) {
-        decryptFile();
-      }
-      //The number 1 here means to use message decryption
-      else if (checkInputsForType() == 1) {
-        decrypt();
-      }
-    } else {
-      alert("Please fill fields, message + key OR file + key.");
+    if (checkInputsForType() == 2) {
+      decryptFile();
+    }
+    //The number 1 here means to use message decryption
+    else if (checkInputsForType() == 1) {
+      decrypt();
+    }
+    else {
+      alertBadInputs();
     }
   }
 }
+
 
 if (document.getElementById("saltBtn")) {
   document.getElementById("saltBtn").onclick = function () {
@@ -97,7 +96,7 @@ function decrypt() {
   }
 }
 
-//Create function to encrypt a file with cryptojs and download it
+//Function to encrypt a file with cryptojs and download it
 function encryptFile() {
   var file = document.getElementById("file").files[0];
   var key = document.getElementById("key").value;
@@ -161,13 +160,23 @@ function randomKey() {
 function checkInputFields() {
   var key = document.getElementById("key").value;
   var file = document.getElementById("file").value;
+  var message = document.getElementById("message").value;
   var inputFilled = false;
 
-  if (message == "" || file == "" && key == "") {
+  if(message == "") {
     inputFilled = false;
+    if(file != "")
+    {
+      inputFilled = true;
+    }
   }
-  else {
-    inputFilled = true;
+  else if(file == "")
+  {
+    inputFilled = false;
+    if(message != "")
+    {
+      inputFilled = true;
+    }
   }
   return inputFilled;
 }
@@ -180,8 +189,20 @@ function checkInputsForType() {
 
   if (key != "" && message != "") {
     return 1;
-  } else if (key != "" && file != "") {
+  }
+  else if (key != "" && file != "") {
     return 2;
   }
 }
 
+function alertBadInputs(){
+
+  if(checkInputFields() == false) {
+    alert("Please select a file or type a message to encrypt");
+    return;
+  }
+  else if(checkInputFields() == true && document.getElementById("key").value == "") {
+    alert("Please enter a key to encrypt with");
+    return;
+  }
+}
