@@ -205,4 +205,5 @@ function alertBadInputs(){
     alert("Please enter a key to encrypt with");
     return;
   }
+
 }
