@@ -1,5 +1,7 @@
 var encrypted;
 var decrypted;
+var filesArray = [];
+var keysArray = [];
 
 window.onload = function () {
   //Hide labels and output areas
@@ -9,21 +11,28 @@ window.onload = function () {
   document.getElementById("decryptedLabel").hidden = true;
 }
 
-//On Click function for encrypt button
-document.getElementById("encryptBtn").onclick = function () {
+
+document.getElementById("encryptBtn").addEventListener("click", function () {
   //Checking inputs fields are not empty
   //The number 2 here means to use file encryption
   if (checkInputsForType() == 2) {
     encryptFile();
+
+    var key = document.getElementById("key").value;
+    var file = document.getElementById("file").value;
+
   }
   //The number 1 here means to use message encryption
   else if (checkInputsForType() == 1) {
     encrypt();
+
+    var key = document.getElementById("key").value;
+    var file = document.getElementById("file").value;
   }
   else {
     alertBadInputs();
   }
-}
+});
 
 //On Click function for decrypt button
 if (document.getElementById("decryptBtn")) {
@@ -205,5 +214,4 @@ function alertBadInputs(){
     alert("Please enter a key to encrypt with");
     return;
   }
-
 }

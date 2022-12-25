@@ -21,21 +21,56 @@
   <script src="../bootstrap/js/jquery-3.6.0.js"></script>
   <script src="../bootstrap/js/bootstrap.js"></script>
 
+
   <meta name="theme-color" content="#fafafa">
 </head>
 <body>
-  <div class="main">
-    <div class="default-container">
-      <!--Top header for all pages -->
-      <div class="card">
-        <div class="card-header">
-          Salt N Pepper
-        </div>
+<div class="main">
+  <div class="default-container">
+    <!--Top header for all pages -->
+    <div class="card">
+      <div class="card-header">
+        Salt N Pepper
       </div>
-      <!--End of top header for all pages -->
+    </div>
+    <!--End of top header for all pages -->
 
+
+    <table id="keytable" class="table">
+      <thead>
+      <tr class="row ps-3">
+        <th class="col-6">File Name</th>
+        <th class="col-6">Key</th>
+      </tr>
+      </thead>
+      <tbody id="tableBody">
+
+      </tbody>
+    </table>
+
+    <h4 id="nokeys">No keys</h4>
+    <div class="row">
+      <div class="col-6" id="file">
+        <label for="file">File Name:</label>
+        <input type="text" id="fileinput" class="form-control" name="fileinput" placeholder="File Name">
+      </div>
+
+      <div class="col-6" id="key">
+        <label for="key">Key:</label>
+        <input type="text" id="keyinput" class="form-control" name="keyinput" placeholder="Key">
+      </div>
     </div>
 
+
+    <button type="button" id="save" class="btn mt-2 btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Add Key
+    </button>
+    <button type="button" id="load" class="btn mt-2 btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Load Key
+    </button>
+    <button type="button" id="clear" class="btn mt-2 btn-primary " data-toggle="modal" data-target="#exampleModal">
+      Clear Key
+    </button>
     <nav aria-label="Some label">
       <ul class="pagination justify-content-center">
         <li class="page-item" name="index">
@@ -52,6 +87,8 @@
       </ul>
     </nav>
     <script src="../js/checklink.js"></script>
+    <script src="../js/keys.js"></script>
   </div>
+</div>
 </body>
 </html>
