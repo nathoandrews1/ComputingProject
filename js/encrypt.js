@@ -5,10 +5,8 @@ var keysArray = [];
 
 window.onload = function () {
   //Hide labels and output areas
-  document.getElementById("encrypted").hidden = true;
-  document.getElementById("encryptedLabel").hidden = true;
-  document.getElementById("decrypted").hidden = true;
-  document.getElementById("decryptedLabel").hidden = true;
+  document.getElementById("decryptedMsgRow").hidden = true;
+  document.getElementById("encryptedMsgRow").hidden = true;
   document.getElementById("messageRow").hidden = true;
 }
 
@@ -51,6 +49,7 @@ if (document.getElementById("decryptBtn")) {
   }
 }
 
+//Single msg / Encrypted file button
 if(document.getElementById("messageEncryptBtn")) {
   document.getElementById("messageEncryptBtn").onclick = function () {
     if(document.getElementById("messageRow").hidden == false) {
@@ -62,6 +61,10 @@ if(document.getElementById("messageEncryptBtn")) {
     if(document.getElementById("messageRow").hidden == true) {
       document.getElementById("messageRow").hidden = false;
       document.getElementById("fileRow").hidden = true;
+
+      if(document.getElementById("message").hidden == false) {
+
+      }
       document.getElementById("messageEncryptBtn").innerHTML = "Encrypt File";
 
       return;
@@ -83,14 +86,12 @@ function encrypt() {
   try {
     encrypted = CryptoJS.AES.encrypt(message, key);
 
-    if(document.getElementById("decrypted").hidden == false) {
-      document.getElementById("decrypted").hidden = true;
-      document.getElementById("decryptedLabel").hidden = true;
+    if(document.getElementById("decryptedMsgRow").hidden == false) {
+      document.getElementById("decryptedMsgRow").hidden = true;
     }
 
     //Unhide labels and output areas and inject output
-    document.getElementById("encrypted").hidden = false;
-    document.getElementById("encryptedLabel").hidden = false;
+    document.getElementById("encryptedMsgRow").hidden = false;
     document.getElementById("encrypted").innerHTML = encrypted.toString();
   } catch (e) {
     alert("Error Encrypting try again.");
@@ -109,14 +110,12 @@ function decrypt() {
       return;
     }
 
-    if(document.getElementById("encrypted").hidden == false) {
-      document.getElementById("encrypted").hidden = true;
-      document.getElementById("encryptedLabel").hidden = true;
+    if(document.getElementById("encryptedMsgRow").hidden == false) {
+      document.getElementById("encryptedMsgRow").hidden = true;
     }
 
     //Unhide labels and output areas and inject output
-    document.getElementById("decrypted").hidden = false;
-    document.getElementById("decryptedLabel").hidden = false;
+    document.getElementById("decryptedMsgRow").hidden = false;
     document.getElementById("decrypted").innerHTML = decrypted.toString(CryptoJS.enc.Utf8);
   } catch (e) {
     document.getElementById("decrypted").innerHTML = "Incorrect key";
