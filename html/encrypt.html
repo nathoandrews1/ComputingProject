@@ -38,12 +38,13 @@
 
 
     <form>
-      <div class="row">
+      <div class="row mb-2" id="fileRow">
         <div class="col">
           <label for="file" class="col-sm-2 col-form-label ms-2">File to encrypt or decrypt:</label>
           <input type="file" id="file" class="form-control" name="message" placeholder="Message">
         </div>
-        <div class="row mt-2 mb-2">
+      </div>
+        <div class="row mb-2" id="messageRow">
           <div class="col">
             <label for="message" class="col-sm-2 col-form-label ms-2">Text message to encrypt or decrypt:</label>
             <input type="text" id="message" class="form-control" name="message" placeholder="Message">
@@ -58,6 +59,7 @@
         <center>
           <button type="button" id="encryptBtn" class="btn btn-outline-success mt-4 mb-4">Encrypt</button>
           <button type="button" id="decryptBtn" class="btn btn-outline-danger mt-4 mb-4">Decrypt</button>
+          <button type="button" id="messageEncryptBtn" class="btn btn-outline-primary mt-4 mb-4">Single Msg</button>
         </center>
       </div>
     </form>

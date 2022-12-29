@@ -9,6 +9,7 @@ window.onload = function () {
   document.getElementById("encryptedLabel").hidden = true;
   document.getElementById("decrypted").hidden = true;
   document.getElementById("decryptedLabel").hidden = true;
+  document.getElementById("messageRow").hidden = true;
 }
 
 
@@ -50,6 +51,23 @@ if (document.getElementById("decryptBtn")) {
   }
 }
 
+if(document.getElementById("messageEncryptBtn")) {
+  document.getElementById("messageEncryptBtn").onclick = function () {
+    if(document.getElementById("messageRow").hidden == false) {
+      document.getElementById("messageRow").hidden = true;
+      document.getElementById("fileRow").hidden = false;
+      document.getElementById("messageEncryptBtn").innerHTML = "Single Msg";
+      return;
+    }
+    if(document.getElementById("messageRow").hidden == true) {
+      document.getElementById("messageRow").hidden = false;
+      document.getElementById("fileRow").hidden = true;
+      document.getElementById("messageEncryptBtn").innerHTML = "Encrypt File";
+
+      return;
+    }
+  }
+}
 
 if (document.getElementById("saltBtn")) {
   document.getElementById("saltBtn").onclick = function () {
@@ -172,18 +190,13 @@ function checkInputFields() {
   var message = document.getElementById("message").value;
   var inputFilled = false;
 
-  if(message == "") {
-    inputFilled = false;
-    if(file != "")
-    {
+  if(document.getElementById("messageRow").hidden == false) {
+    if (message != "") {
       inputFilled = true;
     }
   }
-  else if(file == "")
-  {
-    inputFilled = false;
-    if(message != "")
-    {
+  else if(document.getElementById("fileRow").hidden == false) {
+    if (file != "") {
       inputFilled = true;
     }
   }
@@ -207,11 +220,14 @@ function checkInputsForType() {
 function alertBadInputs(){
 
   if(checkInputFields() == false) {
-    alert("Please select a file or type a message to encrypt");
-    return;
+    if(document.getElementById("messageRow").hidden == false) {
+      alert("Please enter a message and key.");
+    }
+    else {
+      alert("Please select a file and key.");
+    }
   }
   else if(checkInputFields() == true && document.getElementById("key").value == "") {
     alert("Please enter a key to encrypt with");
-    return;
   }
 }
