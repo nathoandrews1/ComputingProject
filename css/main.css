@@ -25,17 +25,44 @@
   padding: 0;
 }
 
+#clearKeysBtn {
+  position: absolute;
+  top: 13.5%;
+  right: 2.5%;
+  height: 28px;
+  color:red;
+  border-color:red;
+  border: 1px solid;
+  transition: 0.2s;
+  background-color: white;
+}
+
+#clearKeysBtn:hover {
+  cursor: pointer;
+  background-color: red;
+  color: white;
+  transition: 0.2s;
+}
+
 .keyDelElement {
   border-top: 1px solid #000;
   border-right: 1px solid #000;
+  color:red;
+  background-color: white;
+  text-align: center;
+  padding-left:0px;
+  transition: 0.2s;
 }
 
 .keyDelElement:hover {
-  background-color: darkred;
+  background-color: red;
+  color:white;
+  transition: 0.2s;
 }
 
 .keysElement:hover {
   background-color: #f1f1f1;
+  transition: 0.2s;
 }
 
 .keysElement {
@@ -43,6 +70,7 @@
   border-left: 1px solid #000;
   border-right: 1px solid #000;
   height: 1.75em;
+  transition: 0.2s;
 }
 
 .keysElementEnd {

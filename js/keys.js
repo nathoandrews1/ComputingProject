@@ -1,23 +1,27 @@
 //Used for the loading local data into and saving the keys into storage as array
 var keysArray = [];
 var encryptedFileLinks = [];
+var currentLink = window.location.href;
 
 
 if(currentLink.includes("keys")) {
   window.onload = function () {
     createTable();
+
+    //This function runs before the above createTable function
     if(document.readyState === 'interactive') {
-      document.getElementById("nokeys").hidden = true;
       document.getElementById("download").hidden = true;
+      document.getElementById("clearKeysBtn").hidden = true;
+      document.getElementById("nokeys").hidden = true;
     }
   }
 }
 
 //Button Events Start
-if(document.getElementById("clear")) {
-  document.getElementById("clear").onclick = function () {
+if(document.getElementById("clearKeysBtn")) {
+  document.getElementById("clearKeysBtn").onclick = function () {
     clearStorage();
-    alert("Storage cleared");
+    refreshPage();
   }
 }
 
@@ -43,6 +47,7 @@ function createTable() {
 
   if(keysArray != null) {
     document.getElementById("nokeys").hidden = true;
+    document.getElementById("clearKeysBtn").hidden = false;
     for (let i = 0; i <= keysArray.length - 1; i++) {
       var row = table.insertRow(i);
       var cell1 = row.insertCell(0);
@@ -51,6 +56,7 @@ function createTable() {
 
 
       //This loop is need to draw the correct borders
+    //if first row
       if (i == keysArray.length - 1) {
         cell1.setAttribute("class", "col-5 me-4 overflow-hidden keysElement keysElementEnd");
         cell2.setAttribute("class", "col-5 overflow-hidden keysElement keysElementEnd");
@@ -59,7 +65,10 @@ function createTable() {
         var delCell = row.insertCell(2);
         delCell.setAttribute("class", "col-1 keyDelElement keysElementEnd");
         delCell.setAttribute("name", "delElement");
-      } else {
+        delCell.innerHTML = "X";
+      }
+      //Else cell is the last cell
+      else {
         cell1.setAttribute("class", "col-5 me-4 overflow-hidden keysElement");
         cell2.setAttribute("class", "col-5 overflow-hidden keysElement");
         cell1.setAttribute("name", "fileElement");
@@ -69,6 +78,7 @@ function createTable() {
         var delCell = row.insertCell(2);
         delCell.setAttribute("class", "col-1 keyDelElement");
         delCell.setAttribute("name", "delElement");
+        delCell.innerHTML = "X";
       }
 
       cell1.innerHTML = keysArray[i].files;
@@ -87,7 +97,7 @@ function createTable() {
       });
     });
 
-    //Adding event listeners to delete buttons
+    //Adding event listeners file element to download encrypted file
     document.getElementsByName("fileElement").forEach(function (element) {
       element.addEventListener("click", function () {
         loadFile(element.innerHTML);
@@ -95,7 +105,7 @@ function createTable() {
     });
 
 
-    //Adding delete onclick function for delCell above
+    //Adding delete onclick function for delCell above to delete
     document.getElementsByName("delElement").forEach(function (element) {
       element.addEventListener("click", function () {
         var row = element.parentNode;
@@ -103,7 +113,7 @@ function createTable() {
         keysArray.splice(index - 1, 1);
         localStorage.setItem("keys", JSON.stringify(keysArray));
         row.remove();
-        window.open(currentLink, "_self");
+        refreshPage();
 
         if(keysArray.length <= 0) {
           localStorage.clear();
@@ -111,8 +121,10 @@ function createTable() {
       });
     });
   }
+  //if there is no keys in storage do below
   else {
     document.getElementById("nokeys").hidden = false;
+    document.getElementById("clearKeysBtn").hidden = true;
   }
 }
 //end of display
@@ -156,6 +168,11 @@ function loadFile(fileName)
   link.setAttribute("href", "data:application/octet-stream," + url);
   link.setAttribute("download", fileName + ".encrypted");
   link.click();
+}
+
+function refreshPage()
+{
+  window.open(currentLink, "_self");
 }
 
 

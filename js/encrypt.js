@@ -132,12 +132,16 @@ function encryptFile() {
     var encrypted = CryptoJS.AES.encrypt(fileData, key);
 
     //Setting the file in storage
-    localStorage.setItem(file.name, encrypted);
+    try {
+      localStorage.setItem(file.name, encrypted);
+    } catch (e) {
+      alert("File cannot exceed 5mb, File not saved into storage.");
+    }
     var link = document.getElementById("download");
     link.setAttribute("href", "data:application/octet-stream," + encrypted);
     link.setAttribute("download", file.name + ".encrypted");
-    //link.href = window.URL.createObjectURL(encrypted);
     link.click();
+    alert("file saved to storage");
   }
   reader.readAsDataURL(file);
 }

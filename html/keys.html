@@ -36,17 +36,19 @@
     <div class="container">
     <table id="keytable" class="list-group">
       <thead>
-      <tr class="row ps-3 pb-2">
+      <tr class="row ps-3 pb-2 mb-2">
         <th class="col-5 me-4">File Name</th>
         <th class="col-5">Key</th>
+        <button type="button" id="clearKeysBtn" class="">Clear All</button>
+
       </tr>
       </thead>
       <tbody id="tableBody">
+      <!-- Empty now but will be updated dynamically by keys.js -->
 
       </tbody>
     </table>
-
-    <h4 id="nokeys">No keys</h4>
+      <h4 id="nokeys">No keys</h4>
     </div>
   </div>
   <nav aria-label="Some label">
@@ -66,7 +68,6 @@
   </nav>
 
   <a id="download" download=""></a>
-  <script src="../js/checklink.js"></script>
   <script src="../js/keys.js"></script>
 </div>
 </body>
