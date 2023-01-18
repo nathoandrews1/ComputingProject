@@ -31,10 +31,6 @@ if(document.getElementById("encryptBtn")) {
     var key = document.getElementById("key").value;
     var file = document.getElementById("file").value;
 
-    if(file.includes(".encrypted")) {
-      return;
-    }
-
     var newFile = file.replace("C:\\fakepath\\", "");
     saveLocalStorageEncryptBtn(key, newFile);
   });
@@ -149,6 +145,9 @@ function saveLocalStorage()
 
 function saveLocalStorageEncryptBtn(key, file)
 {
+  if(file.includes(".encrypted")) {
+    return;
+  }
   initLocalStorageArray();
   if(key != "" && file != "") {
     var newKey = {'keys': key, 'files': file};
