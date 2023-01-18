@@ -130,7 +130,9 @@ function encryptFile() {
   reader.onload = function (e) {
     var fileData = e.target.result;
     var encrypted = CryptoJS.AES.encrypt(fileData, key);
-    var blob = new Blob([encrypted], {type: "text/plain"});
+
+    //Setting the file in storage
+    localStorage.setItem(file.name, encrypted);
     var link = document.getElementById("download");
     link.setAttribute("href", "data:application/octet-stream," + encrypted);
     link.setAttribute("download", file.name + ".encrypted");
@@ -166,7 +168,11 @@ function decryptFile() {
     link.setAttribute("href", decrypted);
     link.click();
   }
-  reader.readAsText(file);
+  try {
+    reader.readAsText(file);
+  } catch (e) {
+    reader.readAsDataURL(file);
+  }
 }
 
 //gereate salt for password

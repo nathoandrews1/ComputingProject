@@ -6,11 +6,6 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
@@ -20,6 +15,9 @@
   <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
   <script src="../bootstrap/js/jquery-3.6.0.js"></script>
   <script src="../bootstrap/js/bootstrap.js"></script>
+  <script src="../cryptojs/components/core.js"></script>
+  <script src="../cryptojs/components/*"></script>
+  <script src="../cryptojs/rollups/aes.js"></script>
 
 
   <meta name="theme-color" content="#fafafa">
@@ -35,12 +33,12 @@
     </div>
     <!--End of top header for all pages -->
 
-
-    <table id="keytable" class="table">
+    <div class="container">
+    <table id="keytable" class="list-group">
       <thead>
-      <tr class="row ps-3">
-        <th class="col-6">File Name</th>
-        <th class="col-6">Key</th>
+      <tr class="row ps-3 pb-2">
+        <th class="col-5 me-4">File Name</th>
+        <th class="col-5">Key</th>
       </tr>
       </thead>
       <tbody id="tableBody">
@@ -49,46 +47,27 @@
     </table>
 
     <h4 id="nokeys">No keys</h4>
-    <div class="row">
-      <div class="col-6" id="file">
-        <label for="file">File Name:</label>
-        <input type="text" id="fileinput" class="form-control" name="fileinput" placeholder="File Name">
-      </div>
-
-      <div class="col-6" id="key">
-        <label for="key">Key:</label>
-        <input type="text" id="keyinput" class="form-control" name="keyinput" placeholder="Key">
-      </div>
     </div>
-
-
-    <button type="button" id="save" class="btn mt-2 btn-primary" data-toggle="modal" data-target="#exampleModal">
-      Add Key
-    </button>
-    <button type="button" id="load" class="btn mt-2 btn-primary" data-toggle="modal" data-target="#exampleModal">
-      Load Key
-    </button>
-    <button type="button" id="clear" class="btn mt-2 btn-primary " data-toggle="modal" data-target="#exampleModal">
-      Clear Key
-    </button>
-    <nav aria-label="Some label">
-      <ul class="pagination justify-content-center">
-        <li class="page-item" name="index">
-          <a class="page-link" href="../index.html">Info<span class="sr-only">(current)</span></a></li>
-        <li class="page-item" name="vault">
-          <a class="page-link" href="../html/vault.html">Vault</a>
-        </li>
-        <li class="page-item" name="keys">
-          <a class="page-link" href="../html/keys.html">Keys</a>
-        </li>
-        <li class="page-item" name="encrypt">
-          <a class="page-link" href="../html/encrypt.html">Encrypt</a>
-        </li>
-      </ul>
-    </nav>
-    <script src="../js/checklink.js"></script>
-    <script src="../js/keys.js"></script>
   </div>
+  <nav aria-label="Some label">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" name="index">
+        <a class="page-link" href="../index.html">Info</a></li>
+      <li class="page-item" name="vault">
+        <a class="page-link" href="../html/vault.html">Vault</a>
+      </li>
+      <li class="page-item active" name="keys">
+        <a class="page-link" href="../html/keys.html">Keys</a>
+      </li>
+      <li class="page-item" name="encrypt">
+        <a class="page-link" href="../html/encrypt.html">Encrypt</a>
+      </li>
+    </ul>
+  </nav>
+
+  <a id="download" download=""></a>
+  <script src="../js/checklink.js"></script>
+  <script src="../js/keys.js"></script>
 </div>
 </body>
 </html>
