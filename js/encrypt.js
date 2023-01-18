@@ -138,13 +138,14 @@ function encryptFile() {
     //Setting the file in storage
     try {
       localStorage.setItem(file.name, encrypted);
-    } catch (e) {
-      alert("File cannot exceed 5mb, File not saved into storage.");
+    } catch (QuotaExceededError) {
+      alert("File cannot exceed 5mb, File not saved into storage. Downloading instead.");
+      var link = document.getElementById("download");
+      link.setAttribute("href", "data:application/octet-stream," + encrypted);
+      link.setAttribute("download", file.name + ".encrypted");
+      link.click();
     }
-    var link = document.getElementById("download");
-    link.setAttribute("href", "data:application/octet-stream," + encrypted);
-    link.setAttribute("download", file.name + ".encrypted");
-    link.click();
+
     alert("file saved to storage");
   }
   reader.readAsDataURL(file);
