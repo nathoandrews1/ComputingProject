@@ -30,6 +30,11 @@ if(document.getElementById("encryptBtn")) {
   document.getElementById("encryptBtn").addEventListener("click", function () {
     var key = document.getElementById("key").value;
     var file = document.getElementById("file").value;
+
+    if(file.includes(".encrypted")) {
+      return;
+    }
+
     var newFile = file.replace("C:\\fakepath\\", "");
     saveLocalStorageEncryptBtn(key, newFile);
   });

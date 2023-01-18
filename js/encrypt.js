@@ -195,7 +195,6 @@ function randomKey() {
   document.getElementById("key").value = key;
 }
 
-
 //Function for checking input fields are filled
 function checkInputFields() {
   var key = document.getElementById("key").value;
