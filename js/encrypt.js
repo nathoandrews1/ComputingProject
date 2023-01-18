@@ -125,6 +125,10 @@ function decrypt() {
 //Function to encrypt a file with cryptojs and download it
 function encryptFile() {
   var file = document.getElementById("file").files[0];
+  if(file.name.includes(".encrypted")) {
+    alert("File already encrypted.");
+    return;
+  }
   var key = document.getElementById("key").value;
   var reader = new FileReader();
   reader.onload = function (e) {
