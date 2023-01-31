@@ -36,12 +36,14 @@
       <div class="row mb-2" id="fileRow">
         <div class="col">
           <label for="file" class="col-sm-2 col-form-label ms-2">File to encrypt or decrypt:</label>
+          <button type="button" class="btn btn-success" id="helpButton">Help</button>
           <input type="file" id="file" class="form-control" name="message" placeholder="Message">
         </div>
       </div>
         <div class="row mb-2" id="messageRow">
           <div class="col">
             <label for="message" class="col-sm-2 col-form-label ms-2">Text message to encrypt or decrypt:</label>
+            <button type="button" class="btn btn-success" id="helpButtonMsg">Help</button>
             <input type="text" id="message" class="form-control" name="message" placeholder="Message">
           </div>
         </div>
@@ -56,8 +58,8 @@
           <button type="button" id="decryptBtn" class="btn btn-outline-danger mt-4 mb-4">Decrypt</button>
           <button type="button" id="messageEncryptBtn" class="btn btn-outline-primary mt-4 mb-4">Single Msg</button>
         </center>
-      </div>
     </form>
+    </div>
 
     <a id="download" download="encrypted.txt"></a>
 
@@ -79,14 +81,11 @@
       <ul class="pagination justify-content-center">
         <li class="page-item" name="index">
           <a class="page-link" href="../index.html">Info<span class="sr-only">(current)</span></a></li>
-        <li class="page-item" name="vault">
-          <a class="page-link" href="../html/vault.html">Vault</a>
+        <li class="page-item active" name="encrypt">
+          <a class="page-link" href="../html/encrypt.html">Encrypt</a>
         </li>
         <li class="page-item" name="keys">
           <a class="page-link" href="../html/keys.html">Keys</a>
-        </li>
-        <li class="page-item active" name="encrypt">
-          <a class="page-link" href="../html/encrypt.html">Encrypt</a>
         </li>
       </ul>
     </nav>

@@ -25,6 +25,24 @@
   padding: 0;
 }
 
+#helpButton{
+  padding:0;
+  padding-bottom: 2px;
+  width: 50px;
+  height:30px;
+  margin-left:44%;
+  margin-bottom: 5px;
+}
+
+#helpButtonMsg {
+  padding:0;
+  padding-bottom: 2px;
+  width: 50px;
+  height:30px;
+  margin-left:28.5%;
+  margin-bottom: 5px;
+}
+
 #pageBtn0, #pageBtn1, #pageBtn2, #pageBtn3, #pageBtn4, #pageBtn5, #pageBtn6, #pageBtn7, #pageBtn8, #pageBtn9{
   position: relative;
   height: 25px;
@@ -122,6 +140,11 @@ html {
 ::selection {
   background: #b3d4fc;
   text-shadow: none;
+}
+
+#nokeys {
+  margin-top:1%;
+  margin-left:4%;
 }
 
 /*

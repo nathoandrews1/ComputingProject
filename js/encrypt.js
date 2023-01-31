@@ -2,6 +2,9 @@ var encrypted;
 var decrypted;
 var filesArray = [];
 var keysArray = [];
+var encryptHelpMessage = "File Encryption,\nClick choose file and select a file to encrypt or decrypt.\nNext enter a key and click encrypt\n\nFile Decryption,\nSelect an encrypted file, enter the key and click decrypt. A download will begin for the deciphered file";
+var encrypMsgHelp = "Message Encryption,\nType a message into the message box and enter a password and click encrypt, the generated encrypted message will be displayed in the encrypted message box.";
+var msgDecrypt = "Message Decryption,\nPaste an encrypted message into the encrypted message box and enter the password used to encrypt the message and click decrypt, the decrypted message will be displayed in the decrypted message box.";
 
 window.onload = function () {
   //Hide labels and output areas
@@ -31,6 +34,14 @@ document.getElementById("encryptBtn").addEventListener("click", function () {
   else {
     alertBadInputs();
   }
+});
+
+document.getElementById("helpButton").addEventListener("click", function () {
+  alert(encryptHelpMessage);
+});
+
+document.getElementById("helpButtonMsg").addEventListener("click", function () {
+  alert(encrypMsgHelp + "\n\n" + msgDecrypt);
 });
 
 //On Click function for decrypt button

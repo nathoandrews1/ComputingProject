@@ -4,12 +4,13 @@ var encryptedFileLinks = [];
 var currentLink = window.location.href;
 var pages;
 var currentPage = 1;
+var maxItemsOnPage = 6;
 
 
 if(currentLink.includes("keys")) {
   window.onload = function () {
     createTable();
-    if(keysArray.length > 6) {
+    if(keysArray.length > maxItemsOnPage) {
       pageControl();
     }
     //This function runs before the above createTable function
@@ -50,7 +51,7 @@ function pageControl(){
   //Implement a table row with buttons for the amount of pages that there is, it will have to be dynamic.
 
   var table = document.getElementById("tableBody");
-  var row = table.insertRow(6);
+  var row = table.insertRow(maxItemsOnPage);
   row.setAttribute("id", "pageRow");
 
   for(let i = 0; i < pages.length; i++) {
@@ -100,7 +101,7 @@ function pageControl(){
 
 function initPageCount()
 {
-  var pageCount = keysArray.length / 6;
+  var pageCount = keysArray.length / maxItemsOnPage;
   pageCount = Math.ceil(pageCount);
   var page = new Array(pageCount);
   for (let i = 0; i < page.length; i++) {
@@ -122,18 +123,18 @@ function clearTable()
 function setupArrayForPageContent()
 {
   var items = [];
-  var pageCount = keysArray.length / 6;
+  var pageCount = keysArray.length / maxItemsOnPage;
   pageCount = Math.ceil(pageCount);
 
   for(let i = 0; i < pageCount; i++) {
     items[i] = [];
 
-    for(let j = 0; j < 6; j++) {
+    for(let j = 0; j < maxItemsOnPage; j++) {
       if(keysArray[j] != null) {
         items[i][j] = keysArray[j];
       }
     }
-    keysArray.splice(0, 6);
+    keysArray.splice(0, maxItemsOnPage);
   }
   initLocalStorageArray();
   return items;
