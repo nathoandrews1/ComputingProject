@@ -25,6 +25,22 @@
   padding: 0;
 }
 
+#pageBtn0, #pageBtn1, #pageBtn2, #pageBtn3, #pageBtn4, #pageBtn5, #pageBtn6, #pageBtn7, #pageBtn8, #pageBtn9{
+  position: relative;
+  height: 25px;
+  width: 25px;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 25%;
+  margin-left: 5px;
+  padding: 0;
+  padding-top: 2px;
+}
+
+#pageBtn0{
+  margin-left: 3px;
+}
+
 #clearKeysBtn {
   position: absolute;
   top: 13.5%;
@@ -48,10 +64,11 @@
   border-top: 1px solid #000;
   border-right: 1px solid #000;
   color:red;
-  background-color: white;
+  background-color: rgba(255,0,0,20%);
   text-align: center;
   padding-left:0px;
   transition: 0.2s;
+  cursor: pointer;
 }
 
 .keyDelElement:hover {
@@ -60,16 +77,17 @@
   transition: 0.2s;
 }
 
-.keysElement:hover {
-  background-color: #f1f1f1;
-  transition: 0.2s;
-}
-
 .keysElement {
   border-top: 1px solid #000;
   border-left: 1px solid #000;
   border-right: 1px solid #000;
   height: 1.75em;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.keysElement:hover {
+  background-color: rgb(210,210,210);
   transition: 0.2s;
 }
 
@@ -118,7 +136,6 @@ hr {
   margin: 1em 0;
   padding: 0;
 }
-
 
 audio,
 canvas,

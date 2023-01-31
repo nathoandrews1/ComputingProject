@@ -129,13 +129,13 @@ function encryptFile() {
     alert("File already encrypted.");
     return;
   }
-  var key = document.getElementById("key").value;
-  var reader = new FileReader();
-  reader.onload = function (e) {
+    var key = document.getElementById("key").value;
+    var reader = new FileReader();
+    reader.onload = function (e) {
     var fileData = e.target.result;
     var encrypted = CryptoJS.AES.encrypt(fileData, key);
 
-    //Setting the file in storage
+    //Saving the encrypted file to file storage
     try {
       localStorage.setItem(file.name, encrypted);
     } catch (QuotaExceededError) {

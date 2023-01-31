@@ -2,12 +2,14 @@
 var keysArray = [];
 var encryptedFileLinks = [];
 var currentLink = window.location.href;
+var pages;
+var currentPage = 1;
 
 
 if(currentLink.includes("keys")) {
   window.onload = function () {
     createTable();
-
+    pageControl();
     //This function runs before the above createTable function
     if(document.readyState === 'interactive') {
       document.getElementById("download").hidden = true;
@@ -41,24 +43,125 @@ function clearStorage() {
   localStorage.clear();
 }
 
+function pageControl(){
+  //do control for page here but call this function after the create table function
+  //Implement a table row with buttons for the amount of pages that there is, it will have to be dynamic.
+
+  var table = document.getElementById("tableBody");
+  var row = table.insertRow(6);
+  row.setAttribute("id", "pageRow");
+
+  for(let i = 0; i < pages.length; i++) {
+    var cell = row.insertCell(i);
+
+    //setting the first page to active
+    if(i == 0) {
+      cell.setAttribute("class", "col-1 page-item active btn btn-outline-primary");
+    }
+    else{
+      cell.setAttribute("class", "col-1 page-item btn btn-outline-primary");
+    }
+
+    cell.setAttribute("id", "pageBtn" + i);
+    cell.setAttribute("name", "pageBtn");
+    cell.innerHTML = pages[i];
+  }
+
+  //This function is used to change the page when the user clicks on the page button
+  document.getElementsByName("pageBtn").forEach(function (element) {
+    element.addEventListener("click", function () {
+      pageId = element.getAttribute("id");
+      var pageNumber = pageId.replace("pageBtn", "");
+
+      //Increment page number to get the correct index
+      pageNumber++;
+      currentPage = pageNumber;
+      clearTable();
+      createTable();
+
+      //This is used to change the active page button
+      var currentClass = element.getAttribute("class");
+      currentClass = currentClass + " active";
+      element.setAttribute("class", currentClass);
+
+      //Search other buttons and remove active class
+      document.getElementsByName("pageBtn").forEach(function (element) {
+        if(element.getAttribute("id") != pageId) {
+          var currentClass = element.getAttribute("class");
+          currentClass = currentClass.replace(" active", "");
+          element.setAttribute("class", currentClass);
+        }
+      });
+    });
+  });
+}
+
+function initPageCount()
+{
+  var pageCount = keysArray.length / 6;
+  pageCount = Math.ceil(pageCount);
+  var page = new Array(pageCount);
+  for (let i = 0; i < page.length; i++) {
+    page[i] = i + 1;
+  }
+  pages = page;
+}
+
+function clearTable()
+{
+  var table = document.getElementById("tableBody");
+  for (let i = table.rows.length - 1; i >= 0; i--) {
+    if(table.rows[i].getAttribute("id") != "pageRow") {
+      table.deleteRow(i);
+    }
+  }
+}
+
+function setupArrayForPageContent()
+{
+  var items = [];
+  var pageCount = keysArray.length / 6;
+  pageCount = Math.ceil(pageCount);
+
+  for(let i = 0; i < pageCount; i++) {
+    items[i] = [];
+
+    for(let j = 0; j < 6; j++) {
+      if(keysArray[j] != null) {
+        items[i][j] = keysArray[j];
+      }
+    }
+    keysArray.splice(0, 6);
+  }
+  initLocalStorageArray();
+  return items;
+}
+
 //This function will draw the table and list contents dynamically
 function createTable() {
   var table = document.getElementById("tableBody");
   keysArray = JSON.parse(localStorage.getItem("keys"));
 
   if(keysArray != null) {
+    //Setting up the page count and content for the page
+    initPageCount();
+    var pageContent = setupArrayForPageContent();
+
+
     document.getElementById("nokeys").hidden = true;
     document.getElementById("clearKeysBtn").hidden = false;
-    for (let i = 0; i <= keysArray.length - 1; i++) {
+
+    //This loop will draw the table
+    for (let i = 0; i <= pageContent[currentPage-1].length - 1; i++) {
       var row = table.insertRow(i);
       var cell1 = row.insertCell(0);
       var cell2 = row.insertCell(1);
       row.setAttribute("class", "row ps-3");
 
 
-      //This loop is need to draw the correct borders
-    //if first row
-      if (i == keysArray.length - 1) {
+      //This is needed to draw the correct borders
+      //IF last row
+      if (i == pageContent[currentPage-1].length - 1) {
         cell1.setAttribute("class", "col-5 me-4 overflow-hidden keysElement keysElementEnd");
         cell2.setAttribute("class", "col-5 overflow-hidden keysElement keysElementEnd");
         cell1.setAttribute("name", "fileElement");
@@ -68,7 +171,7 @@ function createTable() {
         delCell.setAttribute("name", "delElement");
         delCell.innerHTML = "X";
       }
-      //Else cell is the last cell
+      //Else not last cell for that page
       else {
         cell1.setAttribute("class", "col-5 me-4 overflow-hidden keysElement");
         cell2.setAttribute("class", "col-5 overflow-hidden keysElement");
@@ -82,8 +185,8 @@ function createTable() {
         delCell.innerHTML = "X";
       }
 
-      cell1.innerHTML = keysArray[i].files;
-      cell2.innerHTML = keysArray[i].keys;
+      cell1.innerHTML = pageContent[currentPage-1][i].files;
+      cell2.innerHTML = pageContent[currentPage-1][i].keys;
     }
 
     //Adding event listeners to copy buttons
@@ -121,6 +224,7 @@ function createTable() {
         }
       });
     });
+    //End
   }
   //if there is no keys in storage do below
   else {
