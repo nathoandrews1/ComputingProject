@@ -9,7 +9,9 @@ var currentPage = 1;
 if(currentLink.includes("keys")) {
   window.onload = function () {
     createTable();
-    pageControl();
+    if(keysArray.length > 6) {
+      pageControl();
+    }
     //This function runs before the above createTable function
     if(document.readyState === 'interactive') {
       document.getElementById("download").hidden = true;
