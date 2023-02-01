@@ -30,6 +30,15 @@ html, body, .card, .card-header, .card-body {
   background-color: rgba(235,235,235,1);
 }
 
+.active {
+  z-index: 0;
+}
+
+.active:hover {
+  z-index: 1;
+}
+
+
 #helpButton{
   padding:0;
   padding-bottom: 2px;
