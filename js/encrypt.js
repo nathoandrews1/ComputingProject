@@ -244,6 +244,6 @@ function alertBadInputs(){
     }
   }
   else if(checkInputFields() == true && document.getElementById("key").value == "") {
-    alert("Please enter a key to encrypt with");
+    alert("Please enter a key.");
   }
 }
