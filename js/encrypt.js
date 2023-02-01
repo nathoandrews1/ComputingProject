@@ -36,14 +36,6 @@ document.getElementById("encryptBtn").addEventListener("click", function () {
   }
 });
 
-document.getElementById("helpButton").addEventListener("click", function () {
-  alert(encryptHelpMessage);
-});
-
-document.getElementById("helpButtonMsg").addEventListener("click", function () {
-  alert(encrypMsgHelp + "\n\n" + msgDecrypt);
-});
-
 //On Click function for decrypt button
 if (document.getElementById("decryptBtn")) {
   document.getElementById("decryptBtn").onclick = function () {

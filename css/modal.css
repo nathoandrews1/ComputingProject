@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+}
+
+html.modal-active,
+body.modal-active {
+  overflow: hidden;
+}
+
+#marginMessage{
+  margin-bottom: 40px;
+}
+
+#modalContent {
+  top: -5px;
+  left: 0;
+}
+
+#modal-container {
+  position: fixed;
+  display: table;
+  padding-right:1px;
+  height: 80%;
+  width: 90%;
+  bottom: 50px;
+  left: 25px;
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.5);
+  transform: scale(0);
+  z-index: 1;
+}
+#modal-container.one {
+  transform: scaleY(0.01) scaleX(0);
+  animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.one .modal-background .modal {
+  transform: scale(0);
+  animation: zoomIn 0.4s 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.one.out {
+  transform: scale(1);
+  animation: unfoldOut 0.6s 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.one.out .modal-background .modal {
+  animation: zoomOut 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#modal-container .modal-background {
+  display: table-cell;
+  background: rgba(0, 0, 0, 0.5);
+  vertical-align: middle;
+  height:1px;
+}
+#modal-container .modal-background .modal {
+  background: rgba(230, 230, 230, 1);
+  max-height: 100%;
+  top: 0px;
+  padding: 25px;
+  margin-top: 6px;
+  display: inline-block;
+  border-radius: 3px;
+  font-weight: 300;
+  position: relative;
+}
+#modal-container .modal-background .modal h2 {
+  font-size: 18px;
+  line-height: 0px;
+  margin-bottom: 15px;
+}
+#modal-container .modal-background .modal p {
+  font-size: 14px;
+  line-height: 20px;
+}
+#modal-container .modal-background .modal .modal-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 40%;
+  height: 100%;
+  width: 100%;
+  border-radius: 3px;
+}
+#modal-container .modal-background .modal .modal-svg rect {
+  stroke: #fff;
+  stroke-width: 2px;
+  stroke-dasharray: 778;
+  stroke-dashoffset: 778;
+}
+
+@keyframes unfoldIn {
+  0% {
+    transform: scaleY(0.005) scaleX(0);
+  }
+  50% {
+    transform: scaleY(0.005) scaleX(1);
+  }
+  100% {
+    transform: scaleY(1) scaleX(1);
+  }
+}
+@keyframes unfoldOut {
+  0% {
+    transform: scaleY(1) scaleX(1);
+  }
+  50% {
+    transform: scaleY(0.005) scaleX(1);
+  }
+  100% {
+    transform: scaleY(0.005) scaleX(0);
+  }
+}
+@keyframes zoomIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes zoomOut {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+
+
+
+
+
