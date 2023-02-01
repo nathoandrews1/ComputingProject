@@ -55,21 +55,28 @@ if (document.getElementById("decryptBtn")) {
 //Single msg / Encrypted file button
 if(document.getElementById("messageEncryptBtn")) {
   document.getElementById("messageEncryptBtn").onclick = function () {
+
+    //Switching back to file encryption
     if(document.getElementById("messageRow").hidden == false) {
       document.getElementById("messageRow").hidden = true;
       document.getElementById("fileRow").hidden = false;
       document.getElementById("messageEncryptBtn").innerHTML = "Single Msg";
+
+      //Check if any message encrypt box is visible and hide it
+      if(document.getElementById("encryptedMsgRow").hidden == false || document.getElementById("decryptedMsgRow").hidden == false) {
+        document.getElementById("encryptedMsgRow").hidden = true;
+        document.getElementById("decryptedMsgRow").hidden = true;
+        document.getElementById("message").value = "";
+      }
       return;
     }
+
+    //switching to message encryption
     if(document.getElementById("messageRow").hidden == true) {
       document.getElementById("messageRow").hidden = false;
       document.getElementById("fileRow").hidden = true;
 
-      if(document.getElementById("message").hidden == false) {
-
-      }
       document.getElementById("messageEncryptBtn").innerHTML = "Encrypt File";
-
       return;
     }
   }
