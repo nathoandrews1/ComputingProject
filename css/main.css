@@ -23,6 +23,11 @@
 
   margin: 0 auto;
   padding: 0;
+  background-color: rgba(235,235,235,1);
+}
+
+html, body, .card, .card-header, .card-body {
+  background-color: rgba(235,235,235,1);
 }
 
 #helpButton{
