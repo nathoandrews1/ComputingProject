@@ -1,6 +1,6 @@
 {
     "name": "Salt n Pepper",
-    "version": "0.0.5",
+    "version": "0.0.7",
     "description": "Encrypt Files",
     "manifest_version": 3,
     "author": "Nathan Andrews",
