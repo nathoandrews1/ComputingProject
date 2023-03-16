@@ -13,7 +13,7 @@ window.onload = function () {
   document.getElementById("messageRow").hidden = true;
 }
 
-
+//ENCRYPT BUTTON
 document.getElementById("encryptBtn").addEventListener("click", function () {
   //Checking inputs fields are not empty
   //The number 2 here means to use file encryption
@@ -81,6 +81,10 @@ if(document.getElementById("messageEncryptBtn")) {
     }
   }
 }
+
+document.getElementById("vaultBtn").addEventListener("click", function () {
+  window.location.href = "keys.html";
+});
 
 if (document.getElementById("saltBtn")) {
   document.getElementById("saltBtn").onclick = function () {

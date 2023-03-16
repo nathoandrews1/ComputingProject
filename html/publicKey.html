@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Encrypt</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/modal.css">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+  <script src="../bootstrap/js/jquery-3.6.0.js"></script>
+  <script src="../bootstrap/js/bootstrap.js"></script>
+  <script src="../cryptojs/components/core.js"></script>
+  <script src="../cryptojs/components/*"></script>
+  <script src="../cryptojs/rollups/aes.js"></script>
+  <meta name="theme-color" content="#fafafa">
+</head>
+<body>
+<div class="main" id="main">
+  <div class="default-container">
+    <!--Top header for all pages -->
+    <div class="card">
+      <div class="card-header">
+        Salt N Pepper
+      </div>
+    </div>
+    <!--End of top header for all pages -->
+    <!-- small modal -->
+    <div id="modal-container">
+      <div class="modal-background">
+        <div class="modal" id="modalContent">
+          <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+            <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <form>
+      <div class="row mb-2" id="publicKeyRow">
+        <div class="col">
+          <label for="publicKey" class="col-sm-2 col-form-label ms-2">Public Key:</label>
+          <button type="button" class="btn btn-success" id="publicKeyHelpBtn">Help</button>
+          <input type="file" id="publicKey" class="form-control" name="publicKey" placeholder="Public Key File">
+        </div>
+      </div>
+      <div class="row mb-2" id="privateKeyRow">
+        <div class="col">
+          <label for="publicKey" class="col-sm-2 col-form-label ms-2">Private Key:</label>
+          <button type="button" class="btn btn-success" id="privateKeyHelpBtn">Help</button>
+          <input type="file" id="privateKey" class="form-control" name="publicKey" placeholder="Public Key File">
+        </div>
+      </div>
+      <div class="row mb-2">
+        <label for="file" class="col-sm-2 col-form-label ms-2" id="fileLabel">File to Encrypt:</label>
+        <div class="col">
+          <input type="file" id="file" class="form-control" name="file" placeholder="Input File">
+        </div>
+      </div>
+      <center>
+        <button type="button" id="encryptBtn" class="btn btn-outline-success mt-4 mb-4">Encrypt</button>
+        <button type="button" id="decryptBtn" class="btn btn-outline-danger mt-4 mb-4">Decrypt</button>
+        <button type="button" id="keyPairBtn" class="btn btn-outline-primary mt-4 mb-4">Generate Key Pair</button>
+      </center>
+    </form>
+  </div>
+
+  <a id="download" download="encrypted.txt"></a>
+
+  <nav aria-label="Some label">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" name="index">
+        <a class="page-link" href="../index.html">Info</a></li>
+      <li class="page-item active" name="publicKey">
+        <a class="page-link" href="../html/publicKey.html">RSA</a></li>
+      <li class="page-item" name="encrypt">
+        <a class="page-link" href="../html/encrypt.html">AES</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<script src="../js/checklink.js"></script>
+<script src="../js/publicPrivateKey.js"></script>
+<script src="../js/modal.js"></script>
+</div>
+</body>
+</html>

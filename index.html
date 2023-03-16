@@ -23,36 +23,43 @@
 
 <body>
   <div class="main">
+    <div class="default-container">
 
     <div class="card">
       <div class="card-header">
         Salt N Pepper
       </div>
       <div class="card-body">
+        <boutton type="button" id="rsaBtn" class="btn btn-outline-primary">RSA</boutton>
+        <button type="button" id="aesBtn" class="btn btn-outline-success">AES</button>
+        <div id="mainInfoDiv">
+          <h5 class="text-center mb-4" id="infoTitle">Quick Info:</h5>
+          <div id="infoDescriptionDiv">
+            <p id="infoDescription">RSA: Public and Private key encryption. Share the public key and use that to encrypt files.
+              Decrypt with private key file.<br>AES: Symmetric encryption, easier to use. Can be used like a password in this case. But file will be fully protected from tampering.</p>
+          </div>
+        </div>
         <blockquote class="blockquote">
-          <h4 class="text-center mb-4">
-            Giving you full control of encryption!
-          </h4>
-          <p>Use Public and Private keys to share files with your friends.</p>
-          <br>
-          <footer class="blockquote-footer">We need to think of encryption not as sort of arcane, block art. It's basic protection <cite title="Source Title">Edward Snowden.</cite></footer>
+          <footer class="blockquote-footer" id="snowdenQuote"><cite title="Source Title">Edward Snowden</cite> We need to think of encryption not as sort of arcane, block art. It's basic protection</footer>
         </blockquote>
       </div>
     </div>
+      <nav aria-label="Some label" id="navBar">
+        <ul class="pagination justify-content-center">
+          <li class="page-item active" name="index">
+            <a class="page-link" href="index.html">Info</a></li>
+          <li class="page-item" name="publicKey">
+            <a class="page-link" href="html/publicKey.html">RSA</a></li>
+          <li class="page-item" name="encrypt">
+            <a class="page-link" href="html/encrypt.html">AES</a>
+          </li>
+        </ul>
+      </nav>
+      <script src="js/checklink.js"></script>
+      <script src="js/indexPage.js"></script>
+    </div>
 
-    <nav aria-label="Some label">
-      <ul class="pagination justify-content-center">
-        <li class="page-item active" name="index">
-          <a class="page-link" href="index.html">Info</a></li>
-        <li class="page-item" name="encrypt">
-          <a class="page-link" href="html/encrypt.html">Encrypt</a>
-        <li class="page-item" name="keys">
-          <a class="page-link" href="html/keys.html">Keys</a>
-        </li>
-        </li>
-      </ul>
-    </nav>
-    <script src="js/checklink.js"></script>
+
   </div>
 </body>
 </html>

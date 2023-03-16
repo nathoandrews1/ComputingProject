@@ -8,6 +8,11 @@ var maxItemsOnPage = 6;
 
 
 if(currentLink.includes("keys")) {
+
+  document.getElementById("backBtn").addEventListener("click", function () {
+    window.location.href = "encrypt.html";
+  });
+
   window.onload = function () {
     createTable();
     if(keysArray.length > maxItemsOnPage) {
