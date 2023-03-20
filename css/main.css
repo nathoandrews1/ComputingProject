@@ -11,6 +11,11 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
+html,body {
+  margin:0;
+  padding:0;
+}
+
 .main {
   width:450px;
   height:300px;
@@ -23,19 +28,86 @@
 
   margin: 0 auto;
   padding: 0;
-  background-color: rgba(235,235,235,1);
 }
 
 p {
   font-size: 16px;
 }
 
-html, body, .card, .card-header, .card-body {
+#navBarDiv {
+  position: relative;
+  bottom: 5px;
+}
+
+#otherNavBar {
+  position:relative;
+}
+
+#rightSideBorder {
+  position: absolute;
+  top: 0;
+  right:0;
+  height: 100%;
+  width: 3px;
+  z-index: 1;
+}
+
+#bottomSideBorder {
+  position: absolute;
+  bottom:0;
+  height: 3px;
+  width: 100%;
+  z-index: 2;
+}
+
+#bottomSideBorderOther {
+  position: absolute;
+  bottom:0;
+  height: 2px;
+  width: 100%;
+  z-index: 2;
+}
+
+#leftSideBorder {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  z-index: 1;
+}
+
+/* border card coloring */
+#leftSideBorder, #rightSideBorder, #bottomSideBorder, #bottomSideBorderOther {
+background-color:rgba(2,117, 216, 0.2);
+}
+
+/* card header color control */
+#cardTop {
+  background-color: rgba(0, 0, 60, 1);
+  color:#0275d8;
+  border-bottom: 2px solid #0275d8;
+  text-align: center;
+  z-index: 2;
+  font-family: Verdana;
+}
+
+/* background color control */
+html, body, .main, form, .default-container, .card-body {
+  background-color: rgba(219,219,220,1);
+}
+
+/* input color control */
+#privateKey, #publicKey, #message, #file, #key {
   background-color: rgba(235,235,235,1);
 }
 
 .active {
   z-index: 0;
+}
+
+#decrypted {
+  padding-bottom: 5px;
+  margin-bottom: 9px;
 }
 
 .active:hover {
@@ -48,7 +120,7 @@ html, body, .card, .card-header, .card-body {
   transition: 0.4s;
 }
 
-
+/* help button */
 #publicKeyHelpBtn, #helpButton, #helpButtonMsg, #privateKeyHelpBtn {
   position: absolute;
   padding:0;
@@ -61,6 +133,7 @@ html, body, .card, .card-header, .card-body {
   margin-bottom: 5px;
 }
 
+/* buttons for vault pages */
 #pageBtn0, #pageBtn1, #pageBtn2, #pageBtn3, #pageBtn4, #pageBtn5, #pageBtn6, #pageBtn7, #pageBtn8, #pageBtn9{
   position: relative;
   height: 25px;
@@ -156,12 +229,17 @@ html, body, .card, .card-header, .card-body {
   background-color: red;
 }
 
+/* rsa and aes button on info page */
 #rsaBtn, #aesBtn {
   position: absolute;
 }
 
 #aesBtn {
   left:75px;
+}
+
+#rsaBtn, #aesBtn {
+  top: 50px;
 }
 
 #infoDescriptionDiv {

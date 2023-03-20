@@ -169,7 +169,7 @@ code.google.com/p/crypto-js/wiki/License
      *
      * @example
      *
-     *     var ciphertext = CryptoJS.RabbitLegacy.encrypt(message, key, cfg);
+     *     var ciphertext = CryptoJS.RabbitLegacy.aesEncrypt(message, key, cfg);
      *     var plaintext  = CryptoJS.RabbitLegacy.decrypt(ciphertext, key, cfg);
      */
     C.RabbitLegacy = StreamCipher._createHelper(RabbitLegacy);

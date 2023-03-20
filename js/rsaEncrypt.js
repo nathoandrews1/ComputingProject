@@ -140,7 +140,7 @@ async function encryptFiles(file, publicKeyFile) {
     encryptedFileLink.click();
     URL.revokeObjectURL(encryptedFileUrl);
   } catch (e) {
-    alert("Error encrypting file:\nPlease make sure you have selected a public key file and a file to encrypt");
+    alert("Error encrypting file:\nPlease make sure you have selected a public key file and a file to aesEncrypt");
   }
 }
 

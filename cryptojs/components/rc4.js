@@ -85,7 +85,7 @@ code.google.com/p/crypto-js/wiki/License
      *
      * @example
      *
-     *     var ciphertext = CryptoJS.RC4.encrypt(message, key, cfg);
+     *     var ciphertext = CryptoJS.RC4.aesEncrypt(message, key, cfg);
      *     var plaintext  = CryptoJS.RC4.decrypt(ciphertext, key, cfg);
      */
     C.RC4 = StreamCipher._createHelper(RC4);
@@ -118,7 +118,7 @@ code.google.com/p/crypto-js/wiki/License
      *
      * @example
      *
-     *     var ciphertext = CryptoJS.RC4Drop.encrypt(message, key, cfg);
+     *     var ciphertext = CryptoJS.RC4Drop.aesEncrypt(message, key, cfg);
      *     var plaintext  = CryptoJS.RC4Drop.decrypt(ciphertext, key, cfg);
      */
     C.RC4Drop = StreamCipher._createHelper(RC4Drop);

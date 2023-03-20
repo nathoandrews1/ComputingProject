@@ -4255,7 +4255,6 @@ textarea.form-control-lg {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
 .card > hr {
@@ -4541,6 +4540,8 @@ textarea.form-control-lg {
   display: flex;
   padding-left: 0;
   list-style: none;
+  border:0;
+  padding-bottom: 2px;
 }
 
 .page-link {
@@ -4558,24 +4559,23 @@ textarea.form-control-lg {
   }
 }
 .page-link:hover {
-  z-index: 2;
+  z-index: 1;
   color: #0a58ca;
-  background-color: #e9ecef;
+  background-color: rgba(215,215,215,1);
   border-color: #dee2e6;
 }
 .page-link:focus {
-  z-index: 3;
+  z-index: 1;
   color: #0a58ca;
-  background-color: #e9ecef;
+  background-color: rgba(220,220,220,0.5);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 
 .page-item:not(:first-child) .page-link {
   margin-left: -1px;
 }
 .page-item.active .page-link {
-  z-index: 3;
+  z-index: 1;
   color: #fff;
   background-color: #0d6efd;
   border-color: #0d6efd;

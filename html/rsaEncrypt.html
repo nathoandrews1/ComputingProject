@@ -26,7 +26,7 @@
   <div class="default-container">
     <!--Top header for all pages -->
     <div class="card">
-      <div class="card-header">
+      <div class="card-header" id="cardTop">
         Salt N Pepper
       </div>
     </div>
@@ -73,21 +73,26 @@
 
   <a id="download" download="encrypted.txt"></a>
 
-  <nav aria-label="Some label">
+  <div id="navBarDiv">
+  <nav aria-label="Some label" id="otherNavBar">
     <ul class="pagination justify-content-center">
       <li class="page-item" name="index">
         <a class="page-link" href="../index.html">Info</a></li>
       <li class="page-item active" name="publicKey">
-        <a class="page-link" href="../html/publicKey.html">RSA</a></li>
+        <a class="page-link" href="../html/rsaEncrypt.html">RSA</a></li>
       <li class="page-item" name="encrypt">
-        <a class="page-link" href="../html/encrypt.html">AES</a>
+        <a class="page-link" href="aesEncrypt.html">AES</a>
       </li>
     </ul>
   </nav>
+  </div>
+  <!--- border for card -->
+  <div id="rightSideBorder"></div>
+  <div id="leftSideBorder"></div>
+  <div id="bottomSideBorderOther"></div>
 </div>
-<script src="../js/checklink.js"></script>
-<script src="../js/publicPrivateKey.js"></script>
+</div>
+<script src="../js/rsaEncrypt.js"></script>
 <script src="../js/modal.js"></script>
-</div>
 </body>
 </html>

@@ -113,7 +113,7 @@ CryptoJS.lib.Cipher || (function (undefined) {
         /**
          * Adds data to be encrypted or decrypted.
          *
-         * @param {WordArray|string} dataUpdate The data to encrypt or decrypt.
+         * @param {WordArray|string} dataUpdate The data to aesEncrypt or decrypt.
          *
          * @return {WordArray} The data after processing.
          *
@@ -134,7 +134,7 @@ CryptoJS.lib.Cipher || (function (undefined) {
          * Finalizes the encryption or decryption process.
          * Note that the finalize operation is effectively a destructive, read-once operation.
          *
-         * @param {WordArray|string} dataUpdate The final data to encrypt or decrypt.
+         * @param {WordArray|string} dataUpdate The final data to aesEncrypt or decrypt.
          *
          * @return {WordArray} The data after final processing.
          *
@@ -169,7 +169,7 @@ CryptoJS.lib.Cipher || (function (undefined) {
          *
          * @param {Cipher} cipher The cipher to create a helper for.
          *
-         * @return {Object} An object with encrypt and decrypt shortcut functions.
+         * @return {Object} An object with aesEncrypt and decrypt shortcut functions.
          *
          * @static
          *
@@ -301,7 +301,7 @@ CryptoJS.lib.Cipher || (function (undefined) {
                 var cipher = this._cipher;
                 var blockSize = cipher.blockSize;
 
-                // XOR and encrypt
+                // XOR and aesEncrypt
                 xorBlock.call(this, words, offset, blockSize);
                 cipher.encryptBlock(words, offset);
 
@@ -638,7 +638,7 @@ CryptoJS.lib.Cipher || (function (undefined) {
          * Encrypts a message.
          *
          * @param {Cipher} cipher The cipher algorithm to use.
-         * @param {WordArray|string} message The message to encrypt.
+         * @param {WordArray|string} message The message to aesEncrypt.
          * @param {WordArray} key The key.
          * @param {Object} cfg (Optional) The configuration options to use for this operation.
          *
@@ -648,9 +648,9 @@ CryptoJS.lib.Cipher || (function (undefined) {
          *
          * @example
          *
-         *     var ciphertextParams = CryptoJS.lib.SerializableCipher.encrypt(CryptoJS.algo.AES, message, key);
-         *     var ciphertextParams = CryptoJS.lib.SerializableCipher.encrypt(CryptoJS.algo.AES, message, key, { iv: iv });
-         *     var ciphertextParams = CryptoJS.lib.SerializableCipher.encrypt(CryptoJS.algo.AES, message, key, { iv: iv, format: CryptoJS.format.OpenSSL });
+         *     var ciphertextParams = CryptoJS.lib.SerializableCipher.aesEncrypt(CryptoJS.algo.AES, message, key);
+         *     var ciphertextParams = CryptoJS.lib.SerializableCipher.aesEncrypt(CryptoJS.algo.AES, message, key, { iv: iv });
+         *     var ciphertextParams = CryptoJS.lib.SerializableCipher.aesEncrypt(CryptoJS.algo.AES, message, key, { iv: iv, format: CryptoJS.format.OpenSSL });
          */
         encrypt: function (cipher, message, key, cfg) {
             // Apply config defaults
@@ -792,7 +792,7 @@ CryptoJS.lib.Cipher || (function (undefined) {
          * Encrypts a message using a password.
          *
          * @param {Cipher} cipher The cipher algorithm to use.
-         * @param {WordArray|string} message The message to encrypt.
+         * @param {WordArray|string} message The message to aesEncrypt.
          * @param {string} password The password.
          * @param {Object} cfg (Optional) The configuration options to use for this operation.
          *
@@ -802,8 +802,8 @@ CryptoJS.lib.Cipher || (function (undefined) {
          *
          * @example
          *
-         *     var ciphertextParams = CryptoJS.lib.PasswordBasedCipher.encrypt(CryptoJS.algo.AES, message, 'password');
-         *     var ciphertextParams = CryptoJS.lib.PasswordBasedCipher.encrypt(CryptoJS.algo.AES, message, 'password', { format: CryptoJS.format.OpenSSL });
+         *     var ciphertextParams = CryptoJS.lib.PasswordBasedCipher.aesEncrypt(CryptoJS.algo.AES, message, 'password');
+         *     var ciphertextParams = CryptoJS.lib.PasswordBasedCipher.aesEncrypt(CryptoJS.algo.AES, message, 'password', { format: CryptoJS.format.OpenSSL });
          */
         encrypt: function (cipher, message, password, cfg) {
             // Apply config defaults

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>User Vault</title>
+  <title>Keys</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -16,41 +16,62 @@
   <script src="../bootstrap/js/jquery-3.6.0.js"></script>
   <script src="../bootstrap/js/bootstrap.js"></script>
   <script src="../cryptojs/components/core.js"></script>
-  <script src="../cryptojs/components/md5.js"></script>
+  <script src="../cryptojs/components/*"></script>
   <script src="../cryptojs/rollups/aes.js"></script>
+
 
   <meta name="theme-color" content="#fafafa">
 </head>
 <body>
-  <div class="main">
-    <div class="default-container">
-      <!--Top header for all pages -->
-      <div class="card">
-        <div class="card-header">
-          Salt N Pepper
-        </div>
+<div class="main">
+  <div class="default-container">
+    <!--Top header for all pages -->
+    <div class="card">
+      <div class="card-header" id="cardTop">
+        Salt N Pepper
       </div>
-      <!--End of top header for all pages -->
+    </div>
+    <!--End of top header for all pages -->
 
+    <div class="container">
+    <table id="keytable" class="list-group">
+      <thead>
+      <tr class="row ps-3 pb-2 mb-2">
+        <th class="col-5 me-4">File Name</th>
+        <th class="col-5">Key</th>
+        <button type="button" id="clearKeysBtn">Clear All</button>
+        <button type="button" id="backBtn">Back</button>
 
+      </tr>
+      </thead>
+      <tbody id="tableBody">
+      <!-- Empty now but will be updated dynamically by vault.js -->
+
+      </tbody>
+    </table>
+      <h4 id="nokeys">No keys saved</h4>
+    </div>
+  </div>
+  <div id="navBarDiv">
+  <nav aria-label="Some label">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" name="index">
+        <a class="page-link" href="../index.html">Info</a></li>
+      <li class="page-item" name="publicKey">
+        <a class="page-link" href="rsaEncrypt.html">RSA</a></li>
+      <li class="page-item active" name="encrypt">
+        <a class="page-link" href="aesEncrypt.html">AES</a>
+      </li>
+    </ul>
+  </nav>
   </div>
 
-    <nav aria-label="Some label">
-      <ul class="pagination justify-content-center">
-        <li class="page-item" name="index">
-          <a class="page-link" href="../index.html">Info<span class="sr-only">(current)</span></a></li>
-        <li class="page-item active" name="vault">
-          <a class="page-link" href="../html/vault.html">Vault</a>
-        </li>
-        <li class="page-item" name="keys">
-          <a class="page-link" href="../html/keys.html">Keys</a>
-        </li>
-        <li class="page-item" name="encrypt">
-          <a class="page-link" href="../html/encrypt.html">Encrypt</a>
-        </li>
-      </ul>
-    </nav>
-    <script src="../js/checklink.js"></script>
-  </div>
+  <a id="download" download=""></a>
+  <!--- border for card -->
+  <div id="rightSideBorder"></div>
+  <div id="leftSideBorder"></div>
+  <div id="bottomSideBorderOther"></div>
+</div>
+<script src="../js/vault.js"></script>
 </body>
 </html>

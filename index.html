@@ -26,7 +26,7 @@
     <div class="default-container">
 
     <div class="card">
-      <div class="card-header">
+      <div class="card-header" id="cardTop">
         Salt N Pepper
       </div>
       <div class="card-body">
@@ -35,7 +35,7 @@
         <div id="mainInfoDiv">
           <h5 class="text-center mb-4" id="infoTitle">Quick Info:</h5>
           <div id="infoDescriptionDiv">
-            <p id="infoDescription">RSA: Public and Private key encryption. Share the public key and use that to encrypt files.
+            <p id="infoDescription">RSA: Public and Private key encryption. Share the public key and use that to aesEncrypt files.
               Decrypt with private key file.<br>AES: Symmetric encryption, easier to use. Can be used like a password in this case. But file will be fully protected from tampering.</p>
           </div>
         </div>
@@ -44,22 +44,27 @@
         </blockquote>
       </div>
     </div>
+      <div id="navBarDiv">
       <nav aria-label="Some label" id="navBar">
         <ul class="pagination justify-content-center">
           <li class="page-item active" name="index">
             <a class="page-link" href="index.html">Info</a></li>
           <li class="page-item" name="publicKey">
-            <a class="page-link" href="html/publicKey.html">RSA</a></li>
+            <a class="page-link" href="html/rsaEncrypt.html">RSA</a></li>
           <li class="page-item" name="encrypt">
-            <a class="page-link" href="html/encrypt.html">AES</a>
+            <a class="page-link" href="html/aesEncrypt.html">AES</a>
           </li>
         </ul>
       </nav>
-      <script src="js/checklink.js"></script>
-      <script src="js/indexPage.js"></script>
+      </div>
+
     </div>
 
-
+    <!--- border for card -->
+    <div id="rightSideBorder"></div>
+    <div id="leftSideBorder"></div>
+    <div id="bottomSideBorder"></div>
   </div>
+  <script src="js/indexPage.js"></script>
 </body>
 </html>

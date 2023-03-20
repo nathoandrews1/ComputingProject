@@ -26,7 +26,7 @@
   <div class="default-container">
     <!--Top header for all pages -->
     <div class="card">
-      <div class="card-header">
+      <div class="card-header" id="cardTop">
         Salt N Pepper
       </div>
     </div>
@@ -45,14 +45,14 @@
     <form>
       <div class="row mb-2" id="fileRow">
         <div class="col">
-          <label for="file" class="col-sm-2 col-form-label ms-2">File to encrypt or decrypt:</label>
+          <label for="file" class="col-sm-2 col-form-label ms-2">File to aesEncrypt or decrypt:</label>
           <button type="button" class="btn btn-success" id="helpButton">Help</button>
           <input type="file" id="file" class="form-control" name="message" placeholder="Message">
         </div>
       </div>
         <div class="row mb-2" id="messageRow">
           <div class="col">
-            <label for="message" class="col-sm-2 col-form-label ms-2">Text message to encrypt or decrypt:</label>
+            <label for="message" class="col-sm-2 col-form-label ms-2">Text message to aesEncrypt or decrypt:</label>
             <button type="button" class="btn btn-success" id="helpButtonMsg">Help</button>
             <input type="text" id="message" class="form-control" name="message" placeholder="Message">
           </div>
@@ -87,24 +87,27 @@
       </div>
     </div>
 
-
-    <nav aria-label="Some label">
+  <div id="navBarDiv">
+    <nav aria-label="Some label" id="otherNavBar">
       <ul class="pagination justify-content-center">
         <li class="page-item" name="index">
           <a class="page-link" href="../index.html">Info<span class="sr-only">(current)</span></a></li>
         <li class="page-item" name="publicKey">
-          <a class="page-link" href="../html/publicKey.html">RSA</a></li>
+          <a class="page-link" href="rsaEncrypt.html">RSA</a></li>
         <li class="page-item active" name="encrypt">
-          <a class="page-link" href="../html/encrypt.html">AES</a>
+          <a class="page-link" href="../html/aesEncrypt.html">AES</a>
         </li>
-
       </ul>
     </nav>
   </div>
-  <script src="../js/checklink.js"></script>
-  <script src="../js/encrypt.js"></script>
-  <script src="../js/keys.js"></script>
+    <!--- border for card -->
+    <div id="rightSideBorder"></div>
+    <div id="leftSideBorder"></div>
+    <div id="bottomSideBorderOther"></div>
+  </div>
+
+<script src="../js/aesEncrypt.js"></script>
+<script src="../js/vault.js"></script>
 <script src="../js/modal.js"></script>
-</div>
 </body>
 </html>

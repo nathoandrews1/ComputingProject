@@ -705,7 +705,7 @@ code.google.com/p/crypto-js/wiki/License
      *
      * @example
      *
-     *     var ciphertext = CryptoJS.DES.encrypt(message, key, cfg);
+     *     var ciphertext = CryptoJS.DES.aesEncrypt(message, key, cfg);
      *     var plaintext  = CryptoJS.DES.decrypt(ciphertext, key, cfg);
      */
     C.DES = BlockCipher._createHelper(DES);
@@ -749,7 +749,7 @@ code.google.com/p/crypto-js/wiki/License
      *
      * @example
      *
-     *     var ciphertext = CryptoJS.TripleDES.encrypt(message, key, cfg);
+     *     var ciphertext = CryptoJS.TripleDES.aesEncrypt(message, key, cfg);
      *     var plaintext  = CryptoJS.TripleDES.decrypt(ciphertext, key, cfg);
      */
     C.TripleDES = BlockCipher._createHelper(TripleDES);

@@ -2,9 +2,9 @@ var encrypted;
 var decrypted;
 var filesArray = [];
 var keysArray = [];
-var encryptHelpMessage = "File Encryption,\nClick choose file and select a file to encrypt or decrypt.\nNext enter a key and click encrypt\n\nFile Decryption,\nSelect an encrypted file, enter the key and click decrypt. A download will begin for the deciphered file";
-var encrypMsgHelp = "Message Encryption,\nType a message into the message box and enter a password and click encrypt, the generated encrypted message will be displayed in the encrypted message box.";
-var msgDecrypt = "Message Decryption,\nPaste an encrypted message into the encrypted message box and enter the password used to encrypt the message and click decrypt, the decrypted message will be displayed in the decrypted message box.";
+var encryptHelpMessage = "File Encryption,\nClick choose file and select a file to aesEncrypt or decrypt.\nNext enter a key and click aesEncrypt\n\nFile Decryption,\nSelect an encrypted file, enter the key and click decrypt. A download will begin for the deciphered file";
+var encrypMsgHelp = "Message Encryption,\nType a message into the message box and enter a password and click aesEncrypt, the generated encrypted message will be displayed in the encrypted message box.";
+var msgDecrypt = "Message Decryption,\nPaste an encrypted message into the encrypted message box and enter the password used to aesEncrypt the message and click decrypt, the decrypted message will be displayed in the decrypted message box.";
 
 window.onload = function () {
   //Hide labels and output areas
@@ -26,7 +26,7 @@ document.getElementById("encryptBtn").addEventListener("click", function () {
   }
   //The number 1 here means to use message encryption
   else if (checkInputsForType() == 1) {
-    encrypt();
+    aesEncrypt();
 
     var key = document.getElementById("key").value;
     var file = document.getElementById("file").value;
@@ -62,7 +62,7 @@ if(document.getElementById("messageEncryptBtn")) {
       document.getElementById("fileRow").hidden = false;
       document.getElementById("messageEncryptBtn").innerHTML = "Single Msg";
 
-      //Check if any message encrypt box is visible and hide it
+      //Check if any message aesEncrypt box is visible and hide it
       if(document.getElementById("encryptedMsgRow").hidden == false || document.getElementById("decryptedMsgRow").hidden == false) {
         document.getElementById("encryptedMsgRow").hidden = true;
         document.getElementById("decryptedMsgRow").hidden = true;
@@ -83,7 +83,7 @@ if(document.getElementById("messageEncryptBtn")) {
 }
 
 document.getElementById("vaultBtn").addEventListener("click", function () {
-  window.location.href = "keys.html";
+  window.location.href = "vault.html";
 });
 
 if (document.getElementById("saltBtn")) {
@@ -93,8 +93,8 @@ if (document.getElementById("saltBtn")) {
   }
 }
 
-//encrypt function using cryptoJS
-function encrypt() {
+//aesEncrypt function using cryptoJS
+function aesEncrypt() {
   var key = document.getElementById("key").value;
   var message = document.getElementById("message").value;
   try {
@@ -136,7 +136,7 @@ function decrypt() {
   }
 }
 
-//Function to encrypt a file with cryptojs and download it
+//Function to aesEncrypt a file with cryptojs and download it
 function encryptFile() {
   var file = document.getElementById("file").files[0];
   if(file.name.includes(".encrypted")) {
@@ -158,6 +158,7 @@ function encryptFile() {
       link.setAttribute("href", "data:application/octet-stream," + encrypted);
       link.setAttribute("download", file.name + ".encrypted");
       link.click();
+      return;
     }
 
     alert("file saved to storage");
@@ -230,7 +231,7 @@ function checkInputFields() {
   return inputFilled;
 }
 
-//Checking inputs to determine if encrypt message or file should be used
+//Checking inputs to determine if aesEncrypt message or file should be used
 function checkInputsForType() {
   var key = document.getElementById("key").value;
   var message = document.getElementById("message").value;

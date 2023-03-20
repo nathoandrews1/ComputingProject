@@ -206,7 +206,7 @@ code.google.com/p/crypto-js/wiki/License
      *
      * @example
      *
-     *     var ciphertext = CryptoJS.AES.encrypt(message, key, cfg);
+     *     var ciphertext = CryptoJS.AES.aesEncrypt(message, key, cfg);
      *     var plaintext  = CryptoJS.AES.decrypt(ciphertext, key, cfg);
      */
     C.AES = BlockCipher._createHelper(AES);

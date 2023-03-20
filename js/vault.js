@@ -7,10 +7,10 @@ var currentPage = 1;
 var maxItemsOnPage = 6;
 
 
-if(currentLink.includes("keys")) {
+if(currentLink.includes("vault")) {
 
   document.getElementById("backBtn").addEventListener("click", function () {
-    window.location.href = "encrypt.html";
+    window.location.href = "aesEncrypt.html";
   });
 
   window.onload = function () {
@@ -35,7 +35,7 @@ if(document.getElementById("clearKeysBtn")) {
   }
 }
 
-//This functions detects if the user is on the encrypt page, then adding file to storage.
+//This functions detects if the user is on the aesEncrypt page, then adding file to storage.
 if(document.getElementById("encryptBtn")) {
   document.getElementById("encryptBtn").addEventListener("click", function () {
     var key = document.getElementById("key").value;
