@@ -1,17 +1,28 @@
 {
-  "name": " ",
-  "version": "0.0.1",
-  "description": "",
-  "keywords": "",
-  "license": "",
+  "name": "salt-n-pepper",
+  "version": "0.0.8",
+  "description": "encryptino app chrome extension",
+  "keywords": [],
+  "license": "ISC",
   "author": "",
   "scripts": {
     "build": "parcel build index.html",
     "dev": "parcel index.html --open",
     "start": "npm run build && npm run dev",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "devDependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
     "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "chromedriver": "^112.0.0",
+    "selenium-webdriver": "^4.8.2"
+  },
+  "main": "background.js",
+  "directories": {
+    "doc": "doc",
+    "test": "test"
   }
 }
