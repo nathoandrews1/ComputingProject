@@ -1,1 +1,2 @@
 Hello this file is used for testing file encryption.
+Don't change the file name, all tests are using this file.
