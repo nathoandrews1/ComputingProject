@@ -23,6 +23,7 @@ describe('AES File Decryption', function () {
     await driver.get('chrome://extensions');
     const extensionId = 'ipadndggfcndjdbjiaadoloemlmcnlcb';
     await driver.get(`chrome-extension://${extensionId}/index.html`)
+    clearDownloads();
   });
 
   afterEach(async function () {
@@ -88,4 +89,18 @@ describe('AES File Decryption', function () {
     expect(foundAmount).to.greaterThanOrEqual(1);
   });
 });
+
+function clearDownloads(){
+  const downloadDir ="C:\\Users\\losma\\Downloads";
+  const downloadsDirectory = fs.readdirSync(downloadDir);
+
+  for(let i = 0; i < downloadsDirectory.length; i++){
+    if(downloadsDirectory[i].includes('publicKey') || downloadsDirectory[i].includes('privateKey')){
+      fs.unlinkSync(path.resolve(downloadDir, downloadsDirectory[i].toString()));
+    }
+    if(downloadsDirectory[i].includes('test.txt.enc') || downloadsDirectory[i].includes('test.txt')){
+      fs.unlinkSync(path.resolve(downloadDir, downloadsDirectory[i].toString()));
+    }
+  }
+}
 

@@ -9,7 +9,7 @@ const extensionUnpackedPath = 'C:\\____College Year 4\\Final_Project';
 const chromeOptions = new chrome.Options();
 chromeOptions.addArguments(`--load-extension=${extensionUnpackedPath}`);
 
-describe('AES File Encryption', function () {
+describe('Vault Full Test', function () {
   this.timeout(0);
   let driver;
 
@@ -30,38 +30,40 @@ describe('AES File Encryption', function () {
     await driver.quit();
   });
 
-  it('Encrypt a file with AES and check it was added to vault and ownloaded', async function () {
+  it('Check All Vault Functionality', async function () {
     //Setting up inputs
     const key = '1234567890123456';
     const file = path.resolve(__dirname + '/mockFiles/', 'test.txt');
     const downloadDir ="C:\\Users\\losma\\Downloads";
+    const totalAomuntOfPages = 6 * 9;
 
-    //Controlling the encryption flow
-    await driver.findElement(By.name("encrypt")).click();
-    await driver.findElement(By.id("file")).sendKeys(file);
-    await driver.findElement(By.id("key")).sendKeys(key);
-    await driver.findElement(By.id("encryptBtn")).click();
-    //Wait for file to encrypt
-    await driver.sleep(1000);
-    await driver.switchTo().alert().accept();
-    await driver.findElement(By.id("vaultBtn")).click();
-    await driver.findElement(By.name('fileElement')).click();
-    //Wait for file to download
-    await driver.sleep(1000);
-
-    // Filter files based on the search string
-    let found = false;
-    let foundAmount = 0;
-    const filesInDirectory = fs.readdirSync(downloadDir);
-    for(let i = 0; i < filesInDirectory.length; i++){
-      if(filesInDirectory[i].toLocaleLowerCase().includes('test.txt.encrypted')){
-        found = true;
-        foundAmount++;
-      }
+    for(let i = 0; i < totalAomuntOfPages; i++) {
+      //Controlling the encryption flow
+      await driver.findElement(By.name("encrypt")).click();
+      await driver.findElement(By.id("file")).sendKeys(file);
+      await driver.findElement(By.id("key")).sendKeys(key + i);
+      await driver.findElement(By.id("encryptBtn")).click();
+      //Wait for file to encrypt
+      await driver.sleep(50);
+      await driver.switchTo().alert().accept();
     }
 
-    expect(found).to.be.true;
-    expect(foundAmount).to.greaterThan(0);
+    //Checking last page button exists
+    await driver.findElement(By.id("vaultBtn")).click();
+    let lastPageBtn = await driver.findElement(By.id('pageBtn8'));
+    expect(lastPageBtn).not.to.be.null;
+
+    await driver.findElement(By.name("delElement")).click();
+
+    //Test Clear Keys Button
+    await driver.findElement(By.id('clearKeysBtn')).click();
+    try {
+      lastPageBtn = await driver.findElement(By.id('pageBtn8'));
+    } catch (e) {
+      lastPageBtn = null;
+    }
+    expect(lastPageBtn).to.be.null;
+
   });
 });
 
