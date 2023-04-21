@@ -51,7 +51,16 @@ describe('Vault Full Test', function () {
     //Checking last page button exists
     await driver.findElement(By.id("vaultBtn")).click();
     let lastPageBtn = await driver.findElement(By.id('pageBtn8'));
+    let firstPageBtn = await driver.findElement(By.id('pageBtn1'));
+    let fileElement = await driver.findElement(By.name('fileElement'));
+    let noKeysDiv = await driver.findElement(By.id('nokeys'));
+    let isNoKeysVisible = await noKeysDiv.isDisplayed();
+
+    //Check values are shown
     expect(lastPageBtn).not.to.be.null;
+    expect(firstPageBtn).not.to.be.null;
+    expect(fileElement).not.to.be.null;
+    expect(isNoKeysVisible).to.be.false;
 
     await driver.findElement(By.name("delElement")).click();
 
@@ -59,11 +68,29 @@ describe('Vault Full Test', function () {
     await driver.findElement(By.id('clearKeysBtn')).click();
     try {
       lastPageBtn = await driver.findElement(By.id('pageBtn8'));
+      firstPageBtn = await driver.findElement(By.id('pageBtn1'));
+      fileElement = await driver.findElement(By.name('fileElement'));
+
     } catch (e) {
       lastPageBtn = null;
+      firstPageBtn = null;
+      fileElement = null;
     }
-    expect(lastPageBtn).to.be.null;
 
+    //Check that no keys div is shown
+    try {
+      noKeysDiv = await driver.findElement(By.id('nokeys'));
+    } catch (e) {
+      noKeysDiv = null;
+    }
+
+    //Check that all elements have been deleted
+    expect(lastPageBtn).to.be.null;
+    expect(firstPageBtn).to.be.null;
+    expect(fileElement).to.be.null;
+
+    //Check that no keys div is shown
+    expect(noKeysDiv).not.to.be.null;
   });
 });
 
